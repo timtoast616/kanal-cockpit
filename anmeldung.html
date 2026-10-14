@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Anmeldung abgeschlossen</title>
+<link rel="stylesheet" href="stil.css">
+</head>
+<body><main>
+<h1>Anmeldung abgeschlossen</h1>
+<p class="sub">Kanal-Cockpit · Login finished</p>
+<div class="card">
+<p>Kopiere die komplette Adresse dieser Seite (oder den Text unten) und füge sie im Terminal ein. Diese Seite speichert und sendet nichts.</p>
+<p>Copy this page's full address (or the text below) into the terminal. This page does not store or send anything.</p>
+<p><textarea id="url" readonly rows="4" style="width:100%;font:14px ui-monospace,monospace;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text)"></textarea></p>
+<p><button id="kopieren" style="font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer">Kopieren · Copy</button> <span id="ok" style="color:var(--muted)"></span></p>
+</div>
+<p><a href="index.html">← Kanal-Cockpit</a></p>
+<script>
+  const feld = document.getElementById('url');
+  feld.value = location.href;
+  document.getElementById('kopieren').onclick = async () => {
+    try { await navigator.clipboard.writeText(feld.value); document.getElementById('ok').textContent = '✓ kopiert'; }
+    catch { feld.select(); document.getElementById('ok').textContent = 'mit ⌘C kopieren'; }
+  };
+</script>
+</main></body>
+</html>
